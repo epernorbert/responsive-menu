@@ -22,14 +22,8 @@ body {
 }
 .menu_item {
     padding-right: 50px;    
-    padding-left: 50px;
-    /* animation: mymove 3s 1s; */
+    padding-left: 50px;    
 }
-/* @keyframes mymove {
-  from {height: 0;}
-  to {height: auto;}
-} */
-
 
 
 .menu_item div {
@@ -42,7 +36,8 @@ body {
     width: 55px;
     height: 39px;
     position: relative;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    margin: 0 65px 0 0;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
@@ -111,15 +106,6 @@ body {
     left: 50%;
   }
   
-/*media query*/
-/* @media screen and (max-width: 1000px) {
-    #hamburger {
-        display: block;
-    }
-    .menu_item {
-        display: none;
-    }
-} */
 .content{
   background-color: green;
   height: 200%;

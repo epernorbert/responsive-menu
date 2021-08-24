@@ -36,25 +36,27 @@
 		});
 
 		/* Resize screen */
+		var navbar_flag = 0;
 		window.addEventListener('resize', function(event){			
 			var currentWidth = window.innerWidth;			
 			var menu_item_width = $("#menu_item").outerWidth();
 			var box_width = $(".box").outerWidth();
-			var logo_width = $(".logo").outerWidth();						
+			var logo_width = $(".logo").outerWidth();	
 			if(box_width > (menu_item_width + logo_width)){				
 				$("#hamburger").css("display", "none");
 				$(".menu_item").css("display", "block");				
-			}else{				
-				$("#hamburger").css("display", "block");					
+			}else{					
+				$("#hamburger").css("display", "block");				
 				$(".menu_item").css("display", "flex");	
+				$(".menu_item").css("right", "100%");	
+				$(".menu_item").css("width", "100%");	
 				$(".menu_item").css("padding", "0");
 				$(".menu_item").css("background", "red");							
 				$(".menu_item").css("position", "absolute");
-				$(".menu_item").css("top", "100px");								
+				$(".menu_item").css("top", "100px");							
 				$(".menu_item").css("flex-direction", "column");
-				$(".menu_item").css("align-items", "center");
-				$(".menu_item").css("right", "100%");																							
-			}
+				$(".menu_item").css("align-items", "center");												
+			}			
 		});	
 
 		/* First load */
@@ -67,21 +69,21 @@
 		}else{				
 			$("#hamburger").css("display", "block");				
 			$(".menu_item").css("display", "flex");	
+			$(".menu_item").css("right", "100%");	
+			$(".menu_item").css("width", "100%");	
 			$(".menu_item").css("padding", "0");
 			$(".menu_item").css("background", "red");							
 			$(".menu_item").css("position", "absolute");
-			$(".menu_item").css("top", "100px");				
-			$(".menu_item").css("right", "100%");				
+			$(".menu_item").css("top", "100px");							
 			$(".menu_item").css("flex-direction", "column");
-			$(".menu_item").css("align-items", "center");																	
+			$(".menu_item").css("align-items", "center");																				
 		}
 		
 		function hamburger() {
 			var x = document.getElementById("menu_item");			
 			if (x.style.display === "flex") {														
-				$(".menu_item").css("width", "100%");					
-			} else {	
-				
+								
+			} else {					
 				$("#hamburger").addClass("isDown");						
 			}
 		}			
