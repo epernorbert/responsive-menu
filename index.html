@@ -11,52 +11,62 @@
 		<div class="logo">
 			<img src="https://via.placeholder.com/200x70">
 		</div>
-		<div class="push"></div>		
+		<div class="push"></div>
 		<div id="menu_item" class="menu_item">
-			<div class="menu">Menu-1</div>
-			<div class="menu">Menu-2</div>
-			<div class="menu">Menu-3</div>						
+			<div>Menu-1</div>
+			<div>Menu-2</div>
+			<div>Menu-3</div>
+			<div>Menu-4</div>			
 		</div>
-		<div id="hamburger" onclick="hamburger()">
+		<div id="hamburger" onclick="hamburger()" class="hamburger">
 			<span></span>
 			<span></span>
 			<span></span>
 			<span></span>
 		</div>
 	</div>	
-
-	<div class="content"></div>
-
 	<script>
-		/* Hamburger button animation */
 		$(document).ready(function(){
-			$('#hamburger').click(function(){
-				$(this).toggleClass('open');
+			$('#hamburger').click(function(){	
+
+				const hamburgerDiv = document.querySelector('.hamburger');	
+							
+				if(hamburgerDiv.classList.contains('open')){					
+					$("#menu_item").css("display", "none");
+					$("#menu_item").css("width", "auto");
+					$("#menu_item").css("background", "none");
+					$("#menu_item").css("position", "relative");
+					$("#menu_item").css("top", "0");
+				}else{					
+					$("#menu_item").css("display", "flex");
+					$("#menu_item").css("background", "red");
+					$("#menu_item").css("position", "absolute");
+					$("#menu_item").css("width", "100%");
+					$("#menu_item").css("top", "100px");
+					$("#menu_item").css("text-align", "center");
+					$("#menu_item").css("flex-direction", "column");
+				}
+
+				$(this).toggleClass('open');				
 			});			
 		});
 
-		/* Resize screen */
-		var navbar_flag = 0;
-		window.addEventListener('resize', function(event){			
-			var currentWidth = window.innerWidth;			
+		/* Resize */
+		window.addEventListener('resize', function(event){
+			var newWidth = window.innerWidth;			
 			var menu_item_width = $("#menu_item").outerWidth();
 			var box_width = $(".box").outerWidth();
-			var logo_width = $(".logo").outerWidth();	
-			if(box_width > (menu_item_width + logo_width)){				
+			var logo_width = $(".logo").outerWidth();			
+		
+			if(box_width > (menu_item_width + logo_width)){
+				console.log(1)
 				$("#hamburger").css("display", "none");
-				$(".menu_item").css("display", "block");				
-			}else{					
-				$("#hamburger").css("display", "block");				
-				$(".menu_item").css("display", "flex");	
-				$(".menu_item").css("right", "100%");	
-				$(".menu_item").css("width", "100%");	
-				$(".menu_item").css("padding", "0");
-				$(".menu_item").css("background", "red");							
-				$(".menu_item").css("position", "absolute");
-				$(".menu_item").css("top", "100px");							
-				$(".menu_item").css("flex-direction", "column");
-				$(".menu_item").css("align-items", "center");												
-			}			
+				$(".menu_item").css("display", "block");
+			}else{
+				console.log(2)
+				$("#hamburger").css("display", "block");
+				$(".menu_item").css("display", "none");
+			}
 		});	
 
 		/* First load */
@@ -65,39 +75,20 @@
 		var loadWidth = $(window).width();					
 		if(loadWidth > (menu_item_width + logo_width)){
 			$("#hamburger").css("display", "none");
-			$(".menu_item").css("display", "block")								
+			$(".menu_item").css("display", "block");								
 		}else{				
-			$("#hamburger").css("display", "block");				
-			$(".menu_item").css("display", "flex");	
-			$(".menu_item").css("right", "100%");	
-			$(".menu_item").css("width", "100%");	
-			$(".menu_item").css("padding", "0");
-			$(".menu_item").css("background", "red");							
-			$(".menu_item").css("position", "absolute");
-			$(".menu_item").css("top", "100px");							
-			$(".menu_item").css("flex-direction", "column");
-			$(".menu_item").css("align-items", "center");																				
+			$("#hamburger").css("display", "block");
+			$(".menu_item").css("display", "none");																				
 		}
 		
 		function hamburger() {
-			var x = document.getElementById("menu_item");			
-			if (x.style.display === "flex") {														
-								
-			} else {					
-				$("#hamburger").addClass("isDown");						
-			}
-		}			
-
-		$("#hamburger").click( function(event){
-			event.preventDefault();
-			if ( $(this).hasClass("isDown") ) {
-				$(".menu_item").stop().animate({right:"100%"}, 200);	    					
+			var x = document.getElementById("menu_item");
+			if (x.style.display === "block") {
+				x.style.display = "none";
 			} else {
-				$(".menu_item").stop().animate({right:"0"}, 200);
+				x.style.display = "block";
 			}
-			$(this).toggleClass("isDown");
-			return false;
-		});
+		}
 	</script>			
 </body>
 </html>
