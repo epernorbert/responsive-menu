@@ -16,7 +16,7 @@
 			<div>Menu-1</div>
 			<div>Menu-2</div>
 			<div>Menu-3</div>
-			<div>Menu-4</div>			
+			<div>Menu-4</div>								
 		</div>
 		<div id="hamburger" onclick="hamburger()" class="hamburger">
 			<span></span>
@@ -32,11 +32,14 @@
 				const hamburgerDiv = document.querySelector('.hamburger');	
 							
 				if(hamburgerDiv.classList.contains('open')){					
-					$("#menu_item").css("display", "none");
-					$("#menu_item").css("width", "auto");
+					/* $("#menu_item").css("display", "none"); */
+					/* $("#menu_item").css("width", "auto");
 					$("#menu_item").css("background", "none");
 					$("#menu_item").css("position", "relative");
-					$("#menu_item").css("top", "0");
+					$("#menu_item").css("top", "0");	
+					$("#menu_item").css("padding", "0 70px 0 70px"); */						
+					$( ".menu_item" ).addClass("up");				
+					$( ".menu_item" ).removeClass("down");				
 				}else{					
 					$("#menu_item").css("display", "flex");
 					$("#menu_item").css("background", "red");
@@ -45,6 +48,9 @@
 					$("#menu_item").css("top", "100px");
 					$("#menu_item").css("text-align", "center");
 					$("#menu_item").css("flex-direction", "column");
+					$("#menu_item").css("padding", "0");	
+					$( ".menu_item" ).addClass("down");				 									 
+					$( ".menu_item" ).removeClass("up");				
 				}
 
 				$(this).toggleClass('open');				
@@ -59,11 +65,11 @@
 			var logo_width = $(".logo").outerWidth();			
 		
 			if(box_width > (menu_item_width + logo_width)){
-				console.log(1)
+				/* console.log(1) */
 				$("#hamburger").css("display", "none");
 				$(".menu_item").css("display", "block");
 			}else{
-				console.log(2)
+				/* console.log(2) */
 				$("#hamburger").css("display", "block");
 				$(".menu_item").css("display", "none");
 			}
@@ -78,17 +84,36 @@
 			$(".menu_item").css("display", "block");								
 		}else{				
 			$("#hamburger").css("display", "block");
-			$(".menu_item").css("display", "none");																				
+			$(".menu_item").css("display", "none");																	
+			$(".menu_item").css("position", "absolute");																	
+			$(".menu_item").css("top", "100px");																	
 		}
 		
-		function hamburger() {
+		/* function hamburger() {
 			var x = document.getElementById("menu_item");
 			if (x.style.display === "block") {
 				x.style.display = "none";
 			} else {
 				x.style.display = "block";
 			}
-		}
+		} */
+
+		/* $(document).ready(function(){
+		 	$("#hamburger").click(function(){
+		  		$(".menu_item").slideToggle();
+		 	});
+		}); */
+
+		/* $("#hamburger").click( function(event){
+			event.preventDefault();
+			if ( $(this).hasClass("isDown") ) {
+				$(".menu_item").stop().animate({top:"100px"}, 200);	    					
+			} else {
+				$(".menu_item").stop().animate({top:"200px"}, 200);
+			}
+			$(this).toggleClass("isDown");
+			return false;
+		}); */
 	</script>			
 </body>
 </html>

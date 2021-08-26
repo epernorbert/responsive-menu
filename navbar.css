@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: grey;
 }
 .box {
   display: flex;
@@ -21,6 +22,7 @@ body {
 }
 .menu_item {
   padding-right: 60px;    
+  padding-left: 60px;    
 }
 .menu_item div {
   margin: 0 20px;
@@ -32,7 +34,7 @@ body {
   width: 60px;
   height: 45px;
   position: relative;
-  margin: 50px auto;
+  margin: 50px 60px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -101,12 +103,25 @@ body {
   left: 50%;
 }
 
-/*media query*/
-/* @media screen and (max-width: 1000px) {
-  #hamburger {
-      display: block;
-  }
-  .menu_item {
-      display: none;
-  }
-} */
+.down{  
+  transition-property: clip;
+  animation-name: toogleDown;
+  animation-duration: 500ms;  
+  transform-origin: top;
+}
+@keyframes toogleDown{
+  from {clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);}
+  to {clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);}
+}
+
+.up{
+  transition-property: clip;
+  animation-name: toogleUp;
+  animation-duration: 500ms;  
+  transform-origin: bottom;  
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+@keyframes toogleUp{
+  from {clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);}
+  to {clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);}  
+}
