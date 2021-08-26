@@ -25,6 +25,14 @@
 			<span></span>
 		</div>
 	</div>	
+
+	<div class="content">
+		<div class="content_box">
+			<div class="content1">Conten 1</div><br>
+			<div class="content2">Conten 2</div><br>
+			<div class="content3">Conten 3</div><br>
+		</div>
+	</div>
 	<script>
 		$(document).ready(function(){
 			$('#hamburger').click(function(){	
@@ -62,14 +70,22 @@
 			var newWidth = window.innerWidth;			
 			var menu_item_width = $("#menu_item").outerWidth();
 			var box_width = $(".box").outerWidth();
-			var logo_width = $(".logo").outerWidth();			
+			var logo_width = $(".logo").outerWidth();	
+			
+			$(".menu_item").css("position", "relative");																	
+				$(".menu_item").css("top", "0");
+				$(".menu_item").css("width", "auto");
+				$(".menu_item").css("background", "none");
+				$("#menu_item").css("padding", "0 50px 0 50px");
+				$( ".menu_item" ).removeClass("up");
 		
 			if(box_width > (menu_item_width + logo_width)){
-				/* console.log(1) */
+				console.log(1)
 				$("#hamburger").css("display", "none");
 				$(".menu_item").css("display", "block");
+									
 			}else{
-				/* console.log(2) */
+				console.log(2)
 				$("#hamburger").css("display", "block");
 				$(".menu_item").css("display", "none");
 			}
