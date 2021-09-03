@@ -13,12 +13,12 @@
 		</div>
 		<div class="push"></div>
 		<div id="menu_item" class="menu_item">
-			<div>Menu-1</div>
-			<div>Menu-2</div>
-			<div>Menu-3</div>
-			<div>Menu-4</div>								
+			<div id="menu-1">Menu-1</div>
+			<div id="menu-2">Menu-2</div>
+			<div id="menu-3">Menu-3</div>
+			<div id="menu-4">Menu-4</div>								
 		</div>
-		<div id="hamburger" onclick="hamburger()" class="hamburger">
+		<div id="hamburger" class="hamburger">
 			<span></span>
 			<span></span>
 			<span></span>
@@ -26,26 +26,50 @@
 		</div>
 	</div>	
 
-	<div class="content">
-		<div class="content_box">
-			<div class="content1">Conten 1</div><br>
-			<div class="content2">Conten 2</div><br>
-			<div class="content3">Conten 3</div><br>
+	<div class="content-main">
+		<div class="content_box">			
+			<div class="content1" id="menu-1-scroll">Conten 1</div>
+			<div class="content2" id="menu-2-scroll">Conten 2</div>
+			<div class="content3" id="menu-3-scroll">Conten 3</div>
+			<div class="content4" id="menu-4-scroll">Conten 4</div>
 		</div>
 	</div>
 	<script>
+		/* $(document).ready(function(){
+			$('#menu_item div').click(function(){	
+
+				const hamburgerDiv = document.querySelector('.hamburger');	
+							
+				if(hamburgerDiv.classList.contains('open')){															
+					$( ".menu_item" ).addClass("up");				
+					$( ".menu_item" ).removeClass("down");	
+					$( ".hamburger" ).removeClass("open");			
+				}else{					
+					$("#menu_item").css("display", "flex");
+					$("#menu_item").css("background", "red");
+					$("#menu_item").css("position", "absolute");
+					$("#menu_item").css("width", "100%");
+					$("#menu_item").css("top", "100px");
+					$("#menu_item").css("text-align", "center");
+					$("#menu_item").css("flex-direction", "column");
+					$("#menu_item").css("padding", "0");	
+					$( ".menu_item" ).addClass("down");				 									 
+					$( ".menu_item" ).removeClass("up");													
+				}
+				$(this).toggleClass('open');				
+			});			
+		}); */
+
+
+
+
+
 		$(document).ready(function(){
 			$('#hamburger').click(function(){	
 
 				const hamburgerDiv = document.querySelector('.hamburger');	
 							
-				if(hamburgerDiv.classList.contains('open')){					
-					/* $("#menu_item").css("display", "none"); */
-					/* $("#menu_item").css("width", "auto");
-					$("#menu_item").css("background", "none");
-					$("#menu_item").css("position", "relative");
-					$("#menu_item").css("top", "0");	
-					$("#menu_item").css("padding", "0 70px 0 70px"); */						
+				if(hamburgerDiv.classList.contains('open')){															
 					$( ".menu_item" ).addClass("up");				
 					$( ".menu_item" ).removeClass("down");				
 				}else{					
@@ -60,8 +84,6 @@
 					$( ".menu_item" ).addClass("down");				 									 
 					$( ".menu_item" ).removeClass("up");				
 				}
-
-
 				$(this).toggleClass('open');				
 			});			
 		});
@@ -80,13 +102,10 @@
 				$("#menu_item").css("padding", "0 50px 0 50px");
 				$( ".menu_item" ).removeClass("up");
 		
-			if(box_width > (menu_item_width + logo_width)){
-				console.log(1)
+			if(box_width > (menu_item_width + logo_width)){				
 				$("#hamburger").css("display", "none");
-				$(".menu_item").css("display", "block");
-									
-			}else{
-				console.log(2)
+				$(".menu_item").css("display", "block");									
+			}else{				
 				$("#hamburger").css("display", "block");
 				$(".menu_item").css("display", "none");
 			}
@@ -104,33 +123,45 @@
 			$(".menu_item").css("display", "none");																	
 			$(".menu_item").css("position", "absolute");																	
 			$(".menu_item").css("top", "100px");																	
+		}		
+
+		/* Menu item scroll by click */
+		$('#menu-1').on('click keypress', function(event){
+			if(isItClick(event) === true){
+				let program_pos = document.getElementById('menu-1-scroll').getBoundingClientRect();
+				$('html, body').animate({ scrollTop: program_pos.top - 100 + window.pageYOffset }, "slow");				
+			}
+		});
+		$('#menu-2').on('click keypress', function(event){
+			if(isItClick(event) === true){
+				let program_pos = document.getElementById('menu-2-scroll').getBoundingClientRect();
+				$('html, body').animate({ scrollTop: program_pos.top - 100 + window.pageYOffset }, "slow");				
+			}
+		});
+		$('#menu-3').on('click keypress', function(event){
+			if(isItClick(event) === true){
+				let program_pos = document.getElementById('menu-3-scroll').getBoundingClientRect();
+				$('html, body').animate({ scrollTop: program_pos.top - 100 + window.pageYOffset }, "slow");				
+			}
+		});
+		$('#menu-4').on('click keypress', function(event){
+			if(isItClick(event) === true){
+				let program_pos = document.getElementById('menu-4-scroll').getBoundingClientRect();
+				$('html, body').animate({ scrollTop: program_pos.top - 100 + window.pageYOffset }, "slow");				
+			}
+		});
+		function isItClick(event){
+			if(event.type === 'click'){
+				return true;
+			} else if(event.type === 'keypress'){
+				var code = event.charCode || event.keyCode;
+				if((code === 32)|| (code === 13)){
+					return true;
+				}
+			} else{
+				return false;
+			}
 		}
-		
-		/* function hamburger() {
-			var x = document.getElementById("menu_item");
-			if (x.style.display === "block") {
-				x.style.display = "none";
-			} else {
-				x.style.display = "block";
-			}
-		} */
-
-		/* $(document).ready(function(){
-		 	$("#hamburger").click(function(){
-		  		$(".menu_item").slideToggle();
-		 	});
-		}); */
-
-		/* $("#hamburger").click( function(event){
-			event.preventDefault();
-			if ( $(this).hasClass("isDown") ) {
-				$(".menu_item").stop().animate({top:"100px"}, 200);	    					
-			} else {
-				$(".menu_item").stop().animate({top:"200px"}, 200);
-			}
-			$(this).toggleClass("isDown");
-			return false;
-		}); */
 	</script>			
 </body>
 </html>

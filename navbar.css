@@ -1,9 +1,9 @@
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: grey;
+  font-family: Arial, Helvetica, sans-serif;  
 }
 .box {
+  position: fixed;
   display: flex;
   width: 100%;
   height: 100px;
@@ -25,8 +25,11 @@ body {
   padding-left: 50px;    
 }
 .menu_item div {
-  margin: 0 20px;
+  margin: 5px 20px;
   font-size: 35px;
+}
+.menu_item div:hover{
+  cursor: pointer;
 }
 
 /*hamburge icon*/
@@ -34,7 +37,7 @@ body {
   width: 60px;
   height: 45px;
   position: relative;
-  margin: 50px 60px;
+  margin: auto 60px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -102,18 +105,6 @@ body {
   width: 0%;
   left: 50%;
 }
-.content_box div{
-  padding: 30px;
-}
-.content1{
-  background-color: honeydew;
-}
-.content2{
-  background-color: yellow;
-}
-.content3{
-  background-color: green;
-}
 
 .down{  
   transition-property: clip;
@@ -137,3 +128,27 @@ body {
   from {clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);}
   to {clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);}  
 }
+
+/* content placeholder begin */
+.content-main{
+  position: relative;
+  top: 100px;
+  z-index: -1;
+}
+.content_box div{
+  padding: 30px;
+  height: 500px;
+}
+.content1{
+  background-color: grey;  
+}
+.content2{
+  background-color: yellow;
+}
+.content3{
+  background-color: green;
+}
+.content4{
+  background-color: blue;
+}
+/* content placeholder end */
