@@ -21,8 +21,7 @@ body {
   padding-left: 60px;
 }
 .menu_item {
-  padding-right: 50px;    
-  padding-left: 50px;    
+  padding: 0 40px 0 40px;   
 }
 .menu_item div {
   margin: 5px 20px;
