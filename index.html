@@ -105,30 +105,35 @@
 					$( ".hamburger" ).removeClass("open")
 				}
 
-				if($( "#menu_item" ).hasClass( "down" )){
-					//console.log('most van down class')
+				if($( "#menu_item" ).hasClass( "down" )){					
 					$( ".menu_item" ).removeClass("down")
 					$( ".menu_item" ).addClass("up")				
 				}
 			});
 		});	
 
+		/* A function nélkül cache kikapcsolásakor nem vette a logo kép szélességét */
+		const img = new Image();
+		img.onload = function() {		
+			
+			/* First load */
+			var menu_item_width = $("#menu_item").outerWidth();		
+			var logo_width = $(".logo").outerWidth();
+			var loadWidth = $(window).width();
 
-		/* First load */
-		var menu_item_width = $("#menu_item").outerWidth();		
-		var logo_width = $(".logo").outerWidth();
-		var loadWidth = $(window).width();					
-		if(loadWidth > (menu_item_width + logo_width)){
-			$("#hamburger").css("display", "none");
-			$(".menu_item").css("display", "block");	
-			$( "#menu_item div" ).removeClass("toggle_menu");							
-		}else{				
-			$("#hamburger").css("display", "block");
-			$(".menu_item").css("display", "none");																	
-			$(".menu_item").css("position", "absolute");																	
-			$(".menu_item").css("top", "100px");	
-			$( "#menu_item div" ).addClass("toggle_menu");																
+			if(loadWidth > (menu_item_width + logo_width)){
+				$("#hamburger").css("display", "none");
+				$(".menu_item").css("display", "block");	
+				$( "#menu_item div" ).removeClass("toggle_menu");							
+			}else{				
+				$("#hamburger").css("display", "block");
+				$(".menu_item").css("display", "none");																	
+				$(".menu_item").css("position", "absolute");																	
+				$(".menu_item").css("top", "100px");	
+				$( "#menu_item div" ).addClass("toggle_menu");																
+			}
 		}
+		img.src = 'https://via.placeholder.com/200x70';
 		
 		
 		/* Menu item scroll by click */
