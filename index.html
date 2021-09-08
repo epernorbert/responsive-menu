@@ -59,19 +59,17 @@
 			});		
 			
 			/* hamburger menü legördült állapotban menü elemre kattintva felgördül a menü */
-			$('.toggle_menu').click(function(){																											
-				
+			$('.toggle_menu').click(function(){
 				if($( ".hamburger" ).hasClass( "open" )){
 					$( ".hamburger" ).removeClass("open")
 				}
-
-				if($( "#menu_item" ).hasClass( "down" )){
-					//console.log('most van down class')
+				if($( "#menu_item" ).hasClass( "down" )){					
 					$( ".menu_item" ).removeClass("down")
 					$( ".menu_item" ).addClass("up")				
 				} 
 			});
 		});
+
 
 
 		/* Resize window */
@@ -99,12 +97,10 @@
 			}
 
 			/* hamburger menü legördült állapotban menü elemre kattintva felgördül a menü */
-			$('.toggle_menu').click(function(){																											
-				
+			$('.toggle_menu').click(function(){
 				if($( ".hamburger" ).hasClass( "open" )){
 					$( ".hamburger" ).removeClass("open")
 				}
-
 				if($( "#menu_item" ).hasClass( "down" )){					
 					$( ".menu_item" ).removeClass("down")
 					$( ".menu_item" ).addClass("up")				
@@ -112,15 +108,44 @@
 			});
 		});	
 
-		/* A function nélkül cache kikapcsolásakor nem vette a logo kép szélességét */
-		const img = new Image();
-		img.onload = function() {		
-			
-			/* First load */
+					
+		
+		/* First load */
+		var menu_item_width = $("#menu_item").outerWidth();		
+		var logo_width = $(".logo").outerWidth();
+		var loadWidth = $(window).width();		
+
+		if(loadWidth > (menu_item_width + logo_width)){
+			$("#hamburger").css("display", "none");
+			$(".menu_item").css("display", "block");	
+			$( "#menu_item div" ).removeClass("toggle_menu");							
+		}else{				
+			$("#hamburger").css("display", "block");
+			$(".menu_item").css("display", "none");																	
+			$(".menu_item").css("position", "absolute");																	
+			$(".menu_item").css("top", "100px");	
+			$( "#menu_item div" ).addClass("toggle_menu");																
+		}
+		
+		var refresh = setInterval(refreshLogoWidth, 100);
+		var counter = 0;
+
+		function refreshLogoWidth(){
+			/* hamburger menü legördült állapotban menü elemre kattintva felgördül a menü */
+			$('.toggle_menu').click(function(){
+				if($( ".hamburger" ).hasClass( "open" )){
+					$( ".hamburger" ).removeClass("open")
+				}
+				if($( "#menu_item" ).hasClass( "down" )){					
+					$( ".menu_item" ).removeClass("down")
+					$( ".menu_item" ).addClass("up")				
+				} 
+			});
+			counter = counter + 1;
 			var menu_item_width = $("#menu_item").outerWidth();		
 			var logo_width = $(".logo").outerWidth();
-			var loadWidth = $(window).width();
-
+			var loadWidth = $(window).width();		
+			console.log(0)
 			if(loadWidth > (menu_item_width + logo_width)){
 				$("#hamburger").css("display", "none");
 				$(".menu_item").css("display", "block");	
@@ -132,9 +157,15 @@
 				$(".menu_item").css("top", "100px");	
 				$( "#menu_item div" ).addClass("toggle_menu");																
 			}
+			if(counter >= 3){
+				stopRefresh()
+			}
 		}
-		img.src = 'https://via.placeholder.com/200x70';
-		
+		function stopRefresh() {
+			clearInterval(refresh);
+		}		
+	
+
 		
 		/* Menu item scroll by click */
 		$('#menu-1').on('click keypress', function(event){
@@ -173,6 +204,6 @@
 				return false;
 			}
 		}
-	</script>			
+	</script>	
 </body>
 </html>
