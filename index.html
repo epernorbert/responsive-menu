@@ -57,20 +57,11 @@
 				}
 				$(this).toggleClass('open');				
 			});		
-			
-			/* hamburger menü legördült állapotban menü elemre kattintva felgördül a menü */
-			$('.toggle_menu').click(function(){
-				if($( ".hamburger" ).hasClass( "open" )){
-					$( ".hamburger" ).removeClass("open")
-				}
-				if($( "#menu_item" ).hasClass( "down" )){					
-					$( ".menu_item" ).removeClass("down")
-					$( ".menu_item" ).addClass("up")				
-				} 
-			});
+					
+			rollUpHamburger();
 		});
 
-
+		
 
 		/* Resize window */
 		window.addEventListener('resize', function(event){
@@ -95,17 +86,8 @@
 				$(".menu_item").css("display", "none");
 				$( "#menu_item div" ).addClass("toggle_menu");								
 			}
-
-			/* hamburger menü legördült állapotban menü elemre kattintva felgördül a menü */
-			$('.toggle_menu').click(function(){
-				if($( ".hamburger" ).hasClass( "open" )){
-					$( ".hamburger" ).removeClass("open")
-				}
-				if($( "#menu_item" ).hasClass( "down" )){					
-					$( ".menu_item" ).removeClass("down")
-					$( ".menu_item" ).addClass("up")				
-				}
-			});
+			
+			rollUpHamburger();
 		});	
 
 					
@@ -131,16 +113,8 @@
 		var counter = 0;
 
 		function refreshLogoWidth(){
-			/* hamburger menü legördült állapotban menü elemre kattintva felgördül a menü */
-			$('.toggle_menu').click(function(){
-				if($( ".hamburger" ).hasClass( "open" )){
-					$( ".hamburger" ).removeClass("open")
-				}
-				if($( "#menu_item" ).hasClass( "down" )){					
-					$( ".menu_item" ).removeClass("down")
-					$( ".menu_item" ).addClass("up")				
-				} 
-			});
+			
+			rollUpHamburger();
 			counter = counter + 1;
 			var menu_item_width = $("#menu_item").outerWidth();		
 			var logo_width = $(".logo").outerWidth();
@@ -203,6 +177,21 @@
 			} else{
 				return false;
 			}
+		}
+
+
+
+		/* hamburger menü legördült állapotban menü elemre kattintva felgördül a menü */
+		function rollUpHamburger(){
+			$('.toggle_menu').click(function(){
+				if($(".hamburger").hasClass("open")){
+					$(".hamburger").removeClass("open")
+				}
+				if($("#menu_item").hasClass("down")){
+					$(".menu_item").removeClass("down")
+					$(".menu_item").addClass("up")
+				} 
+			});
 		}
 	</script>	
 </body>
