@@ -36,10 +36,12 @@
 			<div class="content4" id="menu-4-scroll">Conten 4</div>
 		</div>
 	</div>
-	<script>		
-		$(document).ready(function(){
-			$('#hamburger').click(function(){	
+	<script>			
+		$(document).ready(function(){		
+			/* "Késleltetve" tölti be a menü elemeket, hogy ne legyen ugrás hamburger menünél */
+			$('.menu_item').delay(100).animate({opacity: '1'});	
 
+			$('#hamburger').click(function(){	
 				const hamburgerDiv = document.querySelector('.hamburger');	
 							
 				if(hamburgerDiv.classList.contains('open')){															
@@ -59,7 +61,6 @@
 				}
 				$(this).toggleClass('open');				
 			});		
-					
 			rollUpHamburger();
 		});
 
@@ -88,7 +89,6 @@
 				$(".menu_item").css("display", "none");
 				$( "#menu_item div" ).addClass("toggle_menu");								
 			}
-			
 			rollUpHamburger();
 		});	
 
@@ -114,12 +114,13 @@
 		var refresh = setInterval(refreshLogoWidth, 100);
 		var counter = 0;
 
+		/* A logo lassabban tölt be, ezért frissíti a logo szélességét 4x 100ms-enként, hogy meglegyen az igazi szélesség. Ezt fedi le az .menu_item classra vonatkozó opaciy animáció */
 		function refreshLogoWidth(){
 			
 			rollUpHamburger();
 			counter = counter + 1;
 			var menu_item_width = $("#menu_item").outerWidth();		
-			var logo_width = $(".logo").outerWidth();
+			var logo_width = $(".logo").outerWidth();			
 			var loadWidth = $(window).width();		
 			console.log(0)
 			if(loadWidth > (menu_item_width + logo_width)){
