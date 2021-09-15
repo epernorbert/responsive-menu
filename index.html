@@ -121,7 +121,8 @@
 			counter = counter + 1;
 			var menu_item_width = $("#menu_item").outerWidth();		
 			var logo_width = $(".logo").outerWidth();			
-			var loadWidth = $(window).width();		
+			var loadWidth = $(window).width();	
+			console.log(logo_width)
 			console.log(0)
 			if(loadWidth > (menu_item_width + logo_width)){
 				$("#hamburger").css("display", "none");
