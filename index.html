@@ -2,6 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Navbar</title>
+	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" href="navbar.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>		
@@ -114,7 +115,7 @@
 		var refresh = setInterval(refreshLogoWidth, 100);
 		var counter = 0;
 
-		/* A logo lassabban tölt be, ezért frissíti a logo szélességét 4x 100ms-enként, hogy meglegyen az igazi szélesség. Ezt fedi le az .menu_item classra vonatkozó opaciy animáció */
+		/* A logo kép lassabban tölt be, ezért frissíti a logo szélességét 4x 100ms-enként, hogy meglegyen az igazi szélessége a menü itemeknek. Ezt fedi le az .menu_item classra vonatkozó opaciy animáció */
 		function refreshLogoWidth(){
 			
 			rollUpHamburger();
@@ -122,8 +123,7 @@
 			var menu_item_width = $("#menu_item").outerWidth();		
 			var logo_width = $(".logo").outerWidth();			
 			var loadWidth = $(window).width();	
-			console.log(logo_width)
-			console.log(0)
+			console.log(logo_width)			
 			if(loadWidth > (menu_item_width + logo_width)){
 				$("#hamburger").css("display", "none");
 				$(".menu_item").css("display", "block");	
@@ -135,7 +135,7 @@
 				$(".menu_item").css("top", "100px");	
 				$( "#menu_item div" ).addClass("toggle_menu");																
 			}
-			if(counter >= 3){
+			if(counter >= 4){
 				stopRefresh()
 			}
 		}
